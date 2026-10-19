@@ -8,8 +8,8 @@
     'assetsPath' => config('invoice-autofill.assets_path', '/vendor/invoice-autofill'),
 ])
 
-<script {{ !empty($nonce) ? 'nonce=' . $nonce : '' }} src="{{ asset(rtrim($assetsPath, '/') . '/pdf/pdf.min.js') }}"></script>
-<script {{ !empty($nonce) ? 'nonce=' . $nonce : '' }} src="{{ asset(rtrim($assetsPath, '/') . '/invoice-autofill.js') }}"></script>
+<script {{ !empty($nonce) ? 'nonce=' . $nonce : '' }} src="{{ asset(trim($assetsPath, '/') . '/pdf/pdf.min.js') }}"></script>
+<script {{ !empty($nonce) ? 'nonce=' . $nonce : '' }} src="{{ asset(trim($assetsPath, '/') . '/invoice-autofill.js') }}"></script>
 
 <style {{ !empty($nonce) ? 'nonce=' . $nonce : '' }}>
     .autofill-badge {
@@ -23,7 +23,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         if (window.InvoiceAutoFill) {
             window.InvoiceAutoFill.init({
-                pdfWorkerUrl: "{{ asset(rtrim($assetsPath, '/') . '/pdf/pdf.worker.min.js') }}"
+                pdfWorkerUrl: "{{ asset(trim($assetsPath, '/') . '/pdf/pdf.worker.min.js') }}"
             });
             window.InvoiceAutoFill.bind({
                 fileInputId: "{{ $fileInputId }}",
